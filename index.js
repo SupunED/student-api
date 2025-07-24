@@ -32,6 +32,24 @@ app.get('/students/:id', (req, res) => {
     }
 })
 
+
+// New PATCH route to update partial Student data
+app.patch('/students/:id', (req, res) => {
+    const student_id = req.params.id;
+    const updated_data = req.body;
+
+    let student = students.find(s => s.id == student_id);
+
+    if (student) {
+        Object.assign(student, updated_data);
+        res.json({message: 'Student Updated', data: student});
+    }
+    else {
+        res.status(404).json({message: 'Student not found'});
+    }
+});
+
+
 // PUT - Update a Student's data
 app.put('/students/:id', (req, res) => {
     const student_id = req.params.id;
