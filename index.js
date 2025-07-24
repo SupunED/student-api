@@ -18,6 +18,20 @@ app.get('/students', (req, res) =>{
     res.json(students);
 })
 
+// New GET method to retrieve Student data by Id
+app.get('/students/:id', (req, res) => {
+    const student_id = req.params.id;
+
+    let student = students.find(s=>s.id == student_id);
+
+    if (student) {
+        res.json(student);
+    }
+    else {
+        res.status(404).json({message: 'Student not found'});
+    }
+})
+
 // PUT - Update a Student's data
 app.put('/students/:id', (req, res) => {
     const student_id = req.params.id;
