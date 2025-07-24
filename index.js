@@ -16,7 +16,7 @@ app.post('/students', (req, res) => {
 // GET - Get all Students
 app.get('/students', (req, res) =>{
     res.json(students);
-})
+});
 
 // New GET method to retrieve Student data by Id
 app.get('/students/:id', (req, res) => {
@@ -30,7 +30,7 @@ app.get('/students/:id', (req, res) => {
     else {
         res.status(404).json({message: 'Student not found'});
     }
-})
+});
 
 
 // New PATCH route to update partial Student data
